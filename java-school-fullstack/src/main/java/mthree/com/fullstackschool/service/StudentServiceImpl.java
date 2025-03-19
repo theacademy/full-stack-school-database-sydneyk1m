@@ -17,6 +17,7 @@ import java.util.List;
 public class StudentServiceImpl implements StudentServiceInterface {
 
     //YOUR CODE STARTS HERE
+
     StudentDao studentDao;
     CourseServiceImpl courseService;
 
@@ -109,6 +110,7 @@ public class StudentServiceImpl implements StudentServiceInterface {
 
     public void addStudentToCourse(int studentId, int courseId) {
         //YOUR CODE STARTS HERE
+
         try {
             Course course = courseService.getCourseById(courseId);
             Student student = getStudentById(studentId);
@@ -125,6 +127,7 @@ public class StudentServiceImpl implements StudentServiceInterface {
         catch (Exception e){
             System.out.println("Student: " + studentId + " already enrolled in course: " + courseId);
         }
+
         //YOUR CODE ENDS HERE
     }
 }

@@ -9,6 +9,7 @@ public class TeacherMapper implements RowMapper<Teacher> {
     @Override
     public Teacher mapRow(ResultSet rs, int rowNum) throws SQLException {
         //YOUR CODE STARTS HERE
+
         Teacher tc = new Teacher();
 
         tc.setTeacherId(rs.getInt("tid"));
