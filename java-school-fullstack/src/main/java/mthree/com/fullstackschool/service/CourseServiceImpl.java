@@ -11,31 +11,46 @@ import java.util.List;
 public class CourseServiceImpl implements CourseServiceInterface {
 
     //YOUR CODE STARTS HERE
+    @Autowired
+    CourseDao courseDao;
 
+    public CourseServiceImpl() {}
 
+    public CourseServiceImpl(CourseDao courseDao) {
+        this.courseDao = courseDao;
+    }
 
     //YOUR CODE ENDS HERE
 
     public List<Course> getAllCourses() {
         //YOUR CODE STARTS HERE
 
-        return null;
+        return courseDao.getAllCourses();
 
         //YOUR CODE ENDS HERE
     }
 
     public Course getCourseById(int id) {
         //YOUR CODE STARTS HERE
+        try {
+            return courseDao.findCourseById(id);
+        } catch (DataAccessException e) {
 
-        return null;
+        }
+
 
         //YOUR CODE ENDS HERE
     }
 
     public Course addNewCourse(Course course) {
         //YOUR CODE STARTS HERE
+        if (course.getCourseName().isBlank()) {
+            course.setCourseName("Name blank, course NOT added");
+        } else if (course.getCourseDesc().isBlank()) {
+            course.setCourseDesc("Description blank, course NOT added");
+        }
 
-        return null;
+        return courseDao.createNewCourse(course);
 
         //YOUR CODE ENDS HERE
     }
@@ -43,7 +58,13 @@ public class CourseServiceImpl implements CourseServiceInterface {
     public Course updateCourseData(int id, Course course) {
         //YOUR CODE STARTS HERE
 
-        return null;
+        if (id != course.getCourseId()) {
+            course.setCourseName("IDs do not match, course not updated");
+            course.setCourseDesc("IDs do not match, course not updated");
+        } else {
+            courseDao.updateCourse(course);
+        }
+        return course;
 
         //YOUR CODE ENDS HERE
     }
@@ -51,7 +72,7 @@ public class CourseServiceImpl implements CourseServiceInterface {
     public void deleteCourseById(int id) {
         //YOUR CODE STARTS HERE
 
-
+        courseDao.deleteCourse(id);
 
         //YOUR CODE ENDS HERE
     }

@@ -12,7 +12,13 @@ import java.util.List;
 public class StudentServiceImpl implements StudentServiceInterface {
 
     //YOUR CODE STARTS HERE
+    StudentDao studentDao;
 
+    public StudentServiceImpl() {}
+
+    public StudentServiceImpl(StudentDao studentDao) {
+        this.studentDao = studentDao;
+    }
 
     //YOUR CODE ENDS HERE
 
