@@ -23,7 +23,12 @@ public class TeacherDaoImpl implements TeacherDao {
     public Teacher createNewTeacher(Teacher teacher) {
         //YOUR CODE STARTS HERE
 
-        return null;
+        final String CREATE_NEW_TEACHER = "INSERT INTO teacher VALUES(?, ?, ?, ?)";
+
+        jdbcTemplate.update(CREATE_NEW_TEACHER, teacher.getTeacherId(), teacher.getTeacherFName(), teacher.getTeacherLName(),
+                teacher.getDept());
+
+        return teacher;
 
         //YOUR CODE ENDS HERE
     }
