@@ -81,7 +81,7 @@ public class StudentDaoImpl implements StudentDao {
     public void updateStudent(Student student) {
         //YOUR CODE STARTS HERE
 
-        final String UPDATE_STUDENT = "UPDATE student SET fName = ?, lName = ?, WHERE sid = ?;";
+        final String UPDATE_STUDENT = "UPDATE student SET fName = ?, lName = ? WHERE sid = ?;";
         jdbcTemplate.update(UPDATE_STUDENT,
                 student.getStudentFirstName(),
                 student.getStudentLastName(),
@@ -96,7 +96,7 @@ public class StudentDaoImpl implements StudentDao {
 
         final String DELETE_STUDENT = "DELETE FROM student WHERE sid = ?;";
 
-        jdbcTemplate.update(DELETE_STUDENT);
+        jdbcTemplate.update(DELETE_STUDENT, id);
 
         //YOUR CODE ENDS HERE
     }
